@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Keyboard Modification</title>
+	<script type="text/javascript">
+		// Define the Finnish keyboard layout
+		const keyboard = {
+		    'q': 'w', 'w': 'qe', 'e': 'ru', 'r': 'ty', 't': 'uö',
+		    'y': 'ti', 'u': 'öä', 'i': 'uy', 'o': 'på', 'p': 'oå',
+		    'å': 'p', 'a': 'sä', 's': 'ad', 'd': 'sf', 'f': 'dg',
+		    'g': 'fh', 'h': 'gj', 'j': 'hk', 'k': 'jl', 'l': 'k',
+		    'ö': 'pä', 'ä': 'åu', 'z': 'x', 'x': 'zc', 'c': 'xv',
+		    'v': 'cb', 'b': 'vn', 'n': 'bm', 'm': 'n'
+		};
+
+		// Define a function that modifies a character based on the Finnish keyboard layout
+		function modifyChar(c) {
+		    if (c in keyboard) {
+		        const replacements = keyboard[c];
+		        return replacements[Math.floor(Math.random() * replacements.length)];
+		    } else {
+		        return c;
+		    }
+		}
+
+		// Function to modify the sentence
+		function modifySentence() {
+			// Get the input sentence
+			const sentence = document.getElementById("input").value;
+
+			// Modify the sentence
+			let modifiedSentence = "";
+			for (const word of sentence.split(" ")) {
+			    for (let i = 0; i < word.length; i++) {
+			        if (Math.random() < 0.2) {
+			            modifiedSentence += modifyChar(word.charAt(i));
+			        } else {
+			            modifiedSentence += word.charAt(i);
+			        }
+			    }
+			    if (Math.random() < 0.1) {
+			        modifiedSentence += " ";
+			    }
+			    if (Math.random() < 0.05) {
+			        modifiedSentence += ",";
+			    }
+			    modifiedSentence += " ";
+			}
+
+			// Display the modified sentence
+			document.getElementById("output").innerHTML = modifiedSentence;
+		}
+	</script>
+</head>
+<body>
+	<label for="input">Enter a sentence:</label>
+	<br>
+	<textarea id="input" rows="4" cols="50"></textarea>
+	<br><br>
+	<button onclick="modifySentence()">Jommify</button>
+	<br><br>
+	<label for="output">Jommifried sentence:</label>
+	<br>
+	<div id="output"></div>
+</body>
+</html>
