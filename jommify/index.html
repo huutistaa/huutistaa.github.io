@@ -50,10 +50,15 @@
 			    }
 			    modifiedSentence += " ";
 			}
+			
+		    	// Add "bro" to the end of the output with a 5% chance
+			    if (Math.random() < 0.25) {
+				modifiedSentence += " bro";
+		    	}			
 
 			// Display the modified sentence
 			document.getElementById("output").innerHTML = modifiedSentence;
-		}
+			}
 	</script>
 </head>
 <body>
