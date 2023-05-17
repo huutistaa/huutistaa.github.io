@@ -47,10 +47,16 @@
 			    modifiedSentence += " ";
 			}
 			
-		    	// Add "bro" to the end of the output with a 5% chance
-			    if (Math.random() < 0.05) {
+		    	// Add "bro" to the end of the output with a 3% chance
+			    if (Math.random() < 0.03) {
 				modifiedSentence += " bro";
-		    	}			
+		    	}		
+			
+		    	// Add "broo" to the end of the output with a 5% chance
+			    if (Math.random() < 0.05) {
+				modifiedSentence += " broo";
+		    	}					
+			
 
 			// Display the modified sentence
 			document.getElementById("output").innerHTML = modifiedSentence;
